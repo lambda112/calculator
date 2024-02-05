@@ -18,7 +18,7 @@ def multiply(n1,n2):
 
 
 def divide(n1,n2):
-    """Divide two numbers together"""
+    """Divide two numbers together. Returns 1 if number is 0"""
 
     if n1 == 0 or n2 == 0:
         print(f"Cannot divide by 0!")
@@ -26,6 +26,13 @@ def divide(n1,n2):
 
     return n1 / n2
 
+
+calc_dict = {
+    "+" : add,
+    "-" : subtract,
+    "*" : multiply,
+    "/" : divide
+}
 
 def calculation(same_value:bool = False, calc:int = 0):
     
@@ -46,12 +53,6 @@ def calculation(same_value:bool = False, calc:int = 0):
 
 
     operator = input("Enter an operator\n+\n-\n*\n/\n: ")
-    calc_dict = {
-        "+" : add(n1, n2),
-        "-" : subtract(n1, n2),
-        "*" : multiply(n1,n2),
-        "/" : divide(n1,n2)
-    }
 
     while True:
         if operator in operations:
@@ -59,7 +60,7 @@ def calculation(same_value:bool = False, calc:int = 0):
         else:
             operator = input("Enter a valid operator\n+\n-\n*\n/\n: ")
 
-    calc = calc_dict[operator]
+    calc = calc_dict[operator](n1, n2)
     print(f"{calc}\n") 
     return calc
 
